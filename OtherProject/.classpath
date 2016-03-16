@@ -7,12 +7,17 @@
 	<classpathentry kind="src" path="execption"/>
 	<classpathentry kind="src" path="genericity"/>
 	<classpathentry kind="src" path="jdbc"/>
-	<classpathentry kind="src" path="lib"/>
 	<classpathentry kind="src" path="pattern"/>
 	<classpathentry kind="src" path="xml"/>
+	<classpathentry kind="src" path="resource"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="E:/Professional/Java/Jar/dom4j-1.6.1.jar"/>
 	<classpathentry kind="lib" path="E:/Professional/Java/Jar/syslog4j.jar"/>
+	<classpathentry kind="lib" path="lib/commons-beanutils.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang-2.4.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="lib/ezmorph-1.0.2.jar"/>
+	<classpathentry kind="lib" path="lib/json-lib-1.1-jdk13.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
