@@ -47,5 +47,23 @@ public class Regex_Test {
 		mnte.setInfoByContent(content);
 		System.out.println(mnte);
 	}
+	
+	@Test
+	public void testItems() throws IOException {
+		Pattern pattern = Pattern.compile("\"_ItemSet\".*?items\":\\[(\\{\"Chart\".*?\\}[,]?)*?\\]", Pattern.CASE_INSENSITIVE);
+		System.out.println(pattern.pattern());
+		InputStream input = Regex_Test.class.getResourceAsStream("string.txt");
+		String content = StreamUtil.readContent(input);
+		System.out.println(content);
+		Matcher matcher = pattern.matcher(content);
+		while(matcher.find()) {
+			content = matcher.group(1).replaceAll("\\\\", "");
+			System.out.println(content);
+		}
+	}
+	
+//	public static void main(String[] args) {
+//		String a = "_ItemSet".*?items":\[({"Chart".*?}[,]?)*?\]
+//	}
 
 }
