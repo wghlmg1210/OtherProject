@@ -4,29 +4,27 @@ public class GunClip {
 
 	private int num;
 
-	public synchronized void put(int i) throws InterruptedException {
-		if (num <= 0) {
-			System.out.println(i+"子弹上膛" + ++num);
+	public void get() throws InterruptedException {
+		while (num > 0) {
+			System.out.println("子弹出膛1,子弹剩余" + --num);
+		}
+		if(num == 0) {
+			System.out.println("没子弹了，请上膛");
 			notify();
-		}else{
-			System.out.println(i+"有子弹，等待上膛 ");
-			wait();	
+			wait();
 		}
 	}
 
-	public synchronized void get() {
-		
-		if (num <= 0) {
-			try {	
-				System.out.println("无子弹，等待出趟 ");
-				wait();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}else{
-			System.out.println("子弹出膛" + --num);
-			notify();
+	public void load(int i) throws InterruptedException {
+		if(num == 0){
+			num += i;
+			System.out.println(i + "发子弹已装弹");
 		}
-		
+		while(num > 0) {
+			System.out.println("子弹充足，请发射");
+			notify();
+			wait();
+		}
 	}
+
 }

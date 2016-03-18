@@ -11,8 +11,8 @@ public class BookingClerk extends Thread {
 	@Override
 	public void run() {
 		synchronized (BookTest.class) {
-			System.out.println("订票数：" + this.bookNum);
 			System.out.println("余票" + BookTest.getBookSum());
+			System.out.println("订票数：" + this.bookNum);
 			BookTest.sell(bookNum);
 		}
 	}

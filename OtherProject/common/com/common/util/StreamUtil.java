@@ -1,6 +1,11 @@
 package com.common.util;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -13,6 +18,22 @@ import java.io.InputStreamReader;
  */
 public class StreamUtil {
 
+	public static String readContent(String fileName) throws IOException {
+		return readContent(new FileInputStream(new File(fileName)), "UTF-8");
+	}
+	
+	public static String readContent(String fileName, String encoding) throws IOException {
+		return readContent(new FileInputStream(new File(fileName)), encoding);
+	}
+	
+	public static String readContent(File file) throws IOException {
+		return readContent(new FileInputStream(file), "UTF-8");
+	}
+	
+	public static String readContent(File file, String encoding) throws IOException {
+		return readContent(new FileInputStream(file), encoding);
+	}
+	
 	public static String readContent(InputStream input) throws IOException {
 		return readContent(input, "UTF-8");
 	}
@@ -39,4 +60,48 @@ public class StreamUtil {
 		return strb.toString();
 	}
 
+	public static boolean copyFile(String sourceFileName, String destFileName) {
+		return copyFile(new File(sourceFileName), new File(destFileName));
+	}
+	
+	/**
+	 * 文件复制
+	 * 
+	 * @param sourceFile
+	 * @param destFile
+	 * @return
+	 */
+	public static boolean copyFile(File sourceFile, File destFile) {
+		BufferedReader buReader = null;
+		BufferedWriter bufWriter = null;
+		try {
+			buReader = new BufferedReader(new FileReader(sourceFile));
+			bufWriter = new BufferedWriter(new FileWriter(destFile));
+
+			String s = null;
+			while ((s = buReader.readLine()) != null) {
+				bufWriter.write(s + "\r\n");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			if (buReader != null) {
+				try {
+					buReader.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			if (bufWriter != null) {
+				try {
+					bufWriter.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return true;
+	}
+	
 }

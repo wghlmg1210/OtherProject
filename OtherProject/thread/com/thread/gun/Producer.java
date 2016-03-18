@@ -1,6 +1,7 @@
 package com.thread.gun;
 
 public class Producer extends Thread {
+
 	private GunClip clip;
 
 	Producer(GunClip clip) {
@@ -8,12 +9,13 @@ public class Producer extends Thread {
 	}
 
 	public void run() {
-		for (int i = 0; i < 30; i++) {
-			try {
-				clip.put(i);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		synchronized (clip) {
+			for (int i = 1; i < 4; i++) {
+				try {
+					clip.load(i);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}

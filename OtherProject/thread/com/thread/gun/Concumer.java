@@ -8,8 +8,14 @@ public class Concumer extends Thread {
 	}
 
 	public void run() {
-		while(true) {
-			clip.get();
+		synchronized (clip) {
+			while(true) {
+				try {
+					clip.get();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 }
