@@ -9,13 +9,11 @@ public class Producer extends Thread {
 	}
 
 	public void run() {
-		synchronized (clip) {
-			for (int i = 1; i < 4; i++) {
-				try {
-					clip.load(i);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+		for (int i = 1; i < 4; i++) {
+			try {
+				clip.load(i);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
 		}
 	}

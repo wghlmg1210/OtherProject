@@ -3,6 +3,8 @@ package com.thread.test1;
 /**
  * 线程通信协作 -- 交叉输出
  * 
+ * notify函数调用之后不会直接进入等待状态，而是将当前的事情执行完之后才进入等待状态
+ * 
  * @author Mr.Huang
  *
  */
