@@ -1,15 +1,16 @@
 package com.jdbc.util;
 
+import java.util.List;
+import java.util.Map;
+
 import com.anno.entity.User;
-import com.anno.parse.AnnoParse;
 
-public class JDBCUtil {
+public interface JDBCUtil {
 
-	/** 注解解析类 */
-	private AnnoParse annoParse = new AnnoParse();
-	
-	public String query(User user) {
-		return annoParse.parse(user);
-	}
+	String query(User user);
+
+	List<Map<String, Object>> queryForList(String sql);
+
+	Map<String, Object> queryForMap(String sql);
 
 }
